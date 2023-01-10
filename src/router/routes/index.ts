@@ -16,6 +16,11 @@ const routes: RouteRecordRaw[] = [
       title: 'Home',
     },
   },
+  {
+    path: '/article/:id',
+    name: 'article',
+    component: () => import('@views/article.vue'),
+  },
   /**
    * 子路由示例
    */
@@ -27,8 +32,8 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: 'Foo',
     },
-    redirect: {
-      name: 'bar',
+    redirect: () => {
+      return '/bar'
     },
     children: [
       {
@@ -42,6 +47,15 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  // 配置一个404路由
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   name: '404',
+  //   component: () => import(/* webpackChunkName: "404" */ '@views/404.vue'),
+  //   meta: {
+  //     title: '404',
+  //   },
+  // },
 ]
 
 export default routes
